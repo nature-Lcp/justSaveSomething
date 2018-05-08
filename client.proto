@@ -1,0 +1,458 @@
+enum emChangeType {
+    kChangeUp                                   = 0;       /* 买涨 */
+    kChangeDown                                 = 1;       /* 买跌 */
+}
+
+enum emSexType {
+    kgirl                                       = 0;       /* 女 */
+    kboy                                        = 1;       /* 男 */
+}
+
+enum emBankType {
+    kICBC                                       = 1;       /* 工商银行 */
+    kABC                                        = 2;       /* 农业银行 */
+    kBC                                         = 3;       /* 中国银行 */
+    kCBC                                        = 4;       /* 建设银行 */
+    kCMB                                        = 5;       /* 招商银行 */
+}
+
+enum emRefundStatus {
+    kRefundApply                                = 1;        /*已经申请*/
+    kRefundTrade                                = 2;        /*已经成交*/
+}
+
+enum emPaySource {
+    kSourceUnionPay                             = 1;        /*银联*/
+    kSourceAliPay                               = 2;        /*支付宝*/
+    kSourceWechat                               = 3;        /*微信*/
+}
+
+enum emOrderStatus {
+    kOrderStatusFree                            = 0;        /*初始状态*/
+    kOrderStatusTrading                         = 1;        /*正在开仓*/
+    kOrderStatusTraded                          = 2;        /*开仓已成交*/
+    kOrderStatusClosing                         = 3;        /*正在平仓*/
+    kOrderStatusClosed                          = 4;        /*平仓已成交*/
+    kOrderStatusCanceling                       = 5;        /*正在撤单*/
+    kOrderStatusCanceled                        = 6;        /*撤单已成交*/
+    kOrderStatusAccept                          = 7;        /*订单已被接受*/
+    kOrderStatusInvalid                         = 8;        /*订单状态错误*/
+}
+
+enum emInstrumentType {
+    kStockInstrument                            = 1;        /*股指*/
+    kShopInstrument                             = 2;        /*商品期货*/
+}
+
+enum emKlineType {
+    klineTypeMinute1                            = 1;        /*1分钟K线图*/
+    klineTypeMinute5                            = 2;        /*5分钟K线图*/
+    klineTypeMinute15                           = 3;        /*15分钟K线图*/
+    klineTypeDay                                = 4;        /*日K线图*/
+}
+
+enum emMeerkatType {
+    kMeerkatReal                                = 1;        /*实盘*/
+    kMeerkatSimu                                = 2;        /*模拟盘*/
+}
+
+enum emRankType {
+    kRankTypeDay                                 = 1;        /*日排行榜*/
+    kRankTypeWeek                                = 2;        /*周排行榜*/
+    kRankTypeMonth                               = 3;        /*月排行榜*/
+}
+
+message RefundInfo {
+    required int32          applyId             = 1;        /*申请id*/
+    required int32          applyTime           = 2;        /*申请时间*/
+    required int32          tradeTime           = 3;        /*成交时间*/
+    required bytes          applyNo             = 4;        /*申请编号*/
+    required bytes          tradeNo             = 5;        /*成交编号*/
+    required double         applyMoney          = 6;        /*申请金额*/
+    optional int32          source              = 7;        /*转账来源，银联、支付宝等*/
+    required string         bankNo              = 8;        /* 开户行卡号 */
+    required int32          status              = 9;        /*申请状态*/
+}
+
+message PayInfo {
+    optional int32          source              = 1;        /*转账来源，银联、支付宝等*/
+    optional int32          time                = 2;        /*转账时间*/
+    optional double         money               = 3;        /*转账金额*/
+    optional bytes          trade_no            = 4;        /*成交编号*/
+}
+
+message MarketData {
+    required bytes          instrumentID        = 1;        /* 合约ID */
+    required bytes          instrumentName      = 2;        /* 合约中文 */
+    repeated TradeItem      tradelist           = 3;
+    required MarketInfo     marketInfo          = 4;
+}
+
+message TradeItem {
+    required double         time                = 1;        /* 时间 */
+    required double         curPrice            = 2;        /* 成交价 */
+    required double         state               = 3;        /* 成交状态 0平 1涨 2跌 */
+    required double         volume              = 4;        /* 成交量 */
+}
+
+/**K线结构体*/
+message KlineData {
+    required int32          time                = 1;        /* 时间 */
+    required double         openPrice           = 2;        /* 开盘价 */
+    required double         closePrice          = 3;        /* 收盘价 */
+    required double         highPrice           = 4;        /* 最高价 */
+    required double         lowPrice            = 5;        /* 最低价 */
+    required int32          volume              = 6;        /* 成交量 */
+    required int32          tradeData           = 7;        /* 交易日期 */
+}
+
+message MarketInfo {
+    required bytes          instrumentID        = 1;        /* 合约ID */
+    required bytes          instrumentName      = 2;        /* 合约中文 */
+    required bytes          tradingDay          = 3;        /* 交易日 */
+    required double         preClosePrice       = 4;        /* 昨收盘 */
+    required double         openPrice           = 5;        /* 今开盘 */
+    required double         closePrice          = 6;        /* 今收 */
+    required double         highPrice           = 7;        /* 今高 */
+    required double         lowPrice            = 8;        /* 今低 */
+    required double         volume              = 9;        /* 成交量 */
+    required double         bidPrice1           = 10;       /* 申请买价 */
+    required int32          bidVolume1          = 11;       /* 申请买量 */
+    required double         askPrice1           = 12;       /* 申请卖价 */
+    required int32          askVolume1          = 13;       /* 申请卖量 */
+    optional double         lowLimit            = 14;       /* 跌停板 */
+    optional double         highLimit           = 15;       /* 涨停板 */
+    optional double         presetPrice         = 16;       /* 上次结算价 */
+}
+
+message TradeData {
+    required bytes          instrumentID        = 1;        /* 合约ID */
+    required bytes          instrumentName      = 2;        /* 合约中文 */
+    required uint32         tradeID             = 3;        /*唯一编号*/
+    required uint32         tradeTime           = 4;        /*平仓时间*/
+    required double         salePoint           = 5;        /*开仓点*/
+    required double         closePoint          = 6;        /*平仓点*/
+    required uint32         change              = 7;        /*买卖方向*/
+    required int32          state               = 8;        /*状态*/
+    required uint32         volume              = 9;        /*成交量*/
+    optional double         stopLimit           = 10;       /* 止损点 */
+    optional double         winLimit            = 11;       /* 止赢点 */
+    optional double         curPrice            = 12;       /* 当前价格 */
+    optional double         point               = 13;       /* 收益 */
+}
+
+message TimeParam {
+    required int32          BeginTime           = 1;        /*开始交易时间*/
+    required int32          EndTime             = 2;        /*结束时间*/
+    required int32          EndTrade            = 3;        /*本系统结束交易时间*/
+}
+
+message InstrumentData {
+    required bytes          InstrumentID        = 1;        /*合约ID*/
+    required bytes          InstrumentName      = 2;        /*合约中文*/
+    required double         LongMarginRate      = 3;        /*做多保证金率*/
+    required double         ShortMarginRate     = 4;        /*做空保证金率*/
+    required double         PriceTick           = 5;        /*最小变动价位*/
+    required int32          VolumeMultiple      = 6;        /*合约数量乘数*/
+    required double         UserCommission      = 7;        /*用户手续费率*/
+    required double         OpenCommission      = 8;        /*开仓手续费率*/
+    required double         CloseCommission     = 9;        /*平仓手续费率*/
+    required double         Leverage            = 10;       /*杠杆倍数*/
+    required double         MaxLimit            = 11;       /*最大止损点*/
+    repeated TimeParam      timeParam           = 12;       /*交易时间*/
+}
+
+message UserRankData {
+    optional int32           rank                = 1;        /*名次*/
+    optional int32           income              = 2;        /*收益*/
+    optional int32           userID              = 3;        /*用户ID*/
+    optional string          userName            = 4;        /*用户名字*/
+}
+
+message TeamRankData {
+    optional int32           rank                = 1;        /*名次*/
+    optional int32           teamID              = 2;        /*战队ID*/
+    optional int32           memberNum           = 3;        /*成员数*/
+    optional int32           qqGroup             = 4;        /*qq群*/
+    optional int32           income              = 5;        /*收益*/
+    optional string          teamName            = 6;        /*战队名字*/
+}
+
+message TeamApplyData {
+    optional int32           teamID              = 1;        /*战队ID*/
+}
+
+message ActiveLogData {
+    required int32          actID               = 1;        /*活动ID*/
+    required string         actName             = 2;        /*活动名字*/
+    required int32          timeStamp           = 3;        /*时间*/
+    required int32          money               = 4;        /*待返金额*/
+}
+
+message CashBackData {
+    required int32          timeStamp           = 1;        /*时间*/
+    required int32          money               = 2;        /*返现金额*/
+}
+
+message LoginReq   {
+    required uint64         userID              = 1;        /* 用户ID */
+    required string         pwd                 = 2;        /* 密码 */
+}
+
+message LoginRsp  {
+    optional double         totalCoin           = 1;         /* 用户总资金 */
+    optional double         userCoin            = 2;         /* 用户可用资金 */
+    optional double         simutotalCoin       = 3;         /* 用户模拟总资金 */
+    optional double         simuUserCoin        = 4;         /* 用户模拟可用资金 */
+    optional string         randomKey           = 5;
+    optional uint32         banktype            = 6;         /* 收款银行 */
+    optional string         bankno              = 7;         /* 银行卡号*/
+    optional string         realName            = 8;         /* 真实姓名 */
+    optional string         borrowName          = 9;         /* 借款人姓名 */
+    optional uint32         photo               = 10;        /* 头像 */
+    optional string         nick                = 11;        /* 昵称 */
+    optional uint32         sex                 = 12;        /* 性别 */
+    optional int32          waitBackCoin        = 13;        /*待返现金*/
+    optional int32          cashBackCoin        = 14;        /*实返现金*/
+}
+
+message GetMarketBasicReq  {
+}
+
+message GetMarketBasicRsp {
+	repeated InstrumentData instrumentData      = 1;         /* 股票数据*/
+    optional uint32         tradeDate           = 2;         /* 交易日期 */
+}
+
+message RegisterReq  {
+    required string         phone               = 1;        /* 电话号码 */
+    required int32          type                = 2;        /* 类型 0注册 1修改密码*/
+    required string         code                = 3;        /* 验证码 */
+    required string         password            = 4;        /* 密码 */
+    required string         nick                = 5;        /* 昵称 */
+}
+
+message RegisterRsp {
+}
+
+/*持仓记录*/
+message OptHistoryTradeReq   {
+    required int32          state               = 1;        /* 订单状态 */
+    required int32          meerkatType         = 2;        /* 盘类型 */
+}
+
+message OptHistoryTradeRsp  {
+    repeated TradeData      tradeData           = 1;        /* 交易数据 */
+    optional int32          state               = 2;        /* 订单状态 */
+    required int32          meerkatType         = 3;        /* 盘类型 */
+}
+
+message SaleStockReq {
+    optional uint32         type                = 1;        /* 操作类型 */
+    optional uint32         tradeID             = 2;        /* 交易单ID */
+    required int32          meerkatType         = 3;        /* 盘类型 */
+}
+
+message SaleStockRsp {
+    optional uint32         tradeID             = 1;        /* 交易单ID */
+    required int32          meerkatType         = 2;        /* 盘类型 */
+}
+
+message BuyStockReq{
+    required bytes          instrumentID        = 1;        /* 股票代码 */
+    required uint32         change              = 2;        /* 买涨跌，和数据库同步 */
+    required uint32         volume              = 3;        /* 购买数量 */
+    required double         stopLimit           = 4;        /* 止损点 */
+    required double         winLimit            = 5;        /* 止赢点 */
+    required int32          meerkatType         = 6;        /* 盘类型 */
+}
+
+message BuyStockRsp{
+    required double         totalCoin           = 1;        /* 用户总资金 */
+    required double         userCoin            = 2;        /* 用户可用资金 */
+    required int32          orderID             = 3;        /* 下单编号 */
+    required int32          meerkatType         = 4;        /* 盘类型 */
+}
+
+message HeartbeatReq {
+    required uint32         time                = 1;        /*客户端时间*/
+}
+
+message HeartbeatRsp {
+    required uint32         time                = 1;        /*服务器时间*/
+    required uint32         state               = 2;        /*是否在交易时间内 0非交易时间 1交易时间*/
+}
+
+message GetMarketInfoReq {
+    required bytes          instrumentID        = 1;        /*股票代码*/
+    required uint32         time                = 2;        /*当前时间*/
+}
+
+message GetMarketInfoRsp {
+    repeated MarketData     marketData          = 1;
+}
+
+message GetMarketListReq {
+    repeated bytes          instrumentID        = 1;        /*股票代码*/
+}
+
+message GetMarketListRsp {
+    repeated MarketInfo     marketInfo          = 1;
+}
+
+message TradeStockReq{
+}
+
+message TradeStockRsp{
+    optional double         userCoin            = 1;        /* 用户金币总量 */
+    repeated TradeData      tradeData           = 2;        /* 交易数据 */
+    required int32          meerkatType         = 3;        /* 盘类型 */
+    optional int32          cashBackCoin        = 4;        /* 实返现金*/
+    optional int32          waitBackCoin        = 5;        /* 待返金额*/
+}
+
+/*推送充值结果*/
+message FlushStateReq {
+}
+
+message FlushStateRsp {
+    required double         totalCoin           = 1;        /* 用户总资金 */
+    required double         userCoin            = 2;        /* 用户可用资金 */
+}
+
+/*转账记录*/
+message GetPayHistoryReq {
+}
+
+message GetPayHistoryRsp {
+    repeated PayInfo        payInfo             = 1;        /*转账记录*/
+}
+
+message ChangeBankInfoReq {
+    required uint32         bankType            = 1;        /* 开户行 */
+    required string         bankNo              = 2;        /* 开户行卡号 */
+}
+
+message ChangeBankInfoRsp {
+}
+
+//! 提现申请
+message RefundApplyReq {
+    required string         bankNo              = 1;        /* 开户行卡号 */
+    required int32          bankName            = 2;        /* 开户行 */
+    required double         money               = 3;        /* 提现金额 */
+    required string         applyUser           = 4;        /* 申请人名字 */
+}
+
+message RefundApplyRsp {
+    required int32          applyid             = 1;        /* 申请id */
+    required string         applyNo             = 2;        /* 业务受理流水号 */
+    required int32          availableMoney      = 3;        /* 当前可用资金 */
+    required string         bankNo              = 4;        /* 开户行卡号 */
+    required int32          bankName            = 5;        /* 开户行 */
+    required double         money               = 6;        /* 提现金额 */
+    required string         applyUser           = 7;        /* 申请人名字 */
+}
+
+//! 撤销提现申请
+message RefundUndoReq {
+    required int32          applyid             = 1;        /* 申请id */
+    required string         applyNo             = 2;        /* 业务受理流水号 */
+}
+
+message RefundUndoRsp {
+    required string         tradeNo             = 1;        /* 业务成交流水号 */
+    required int32          availableMoney      = 2;        /* 当前可用资金 */
+}
+
+//! 查看提现
+message ListRefundReq {
+}
+
+message ListRefundRsp {
+    repeated RefundInfo     refundInfo          = 1;        /*提现数据，最多30条*/
+}
+
+/**获取K线数据*/
+message GetKlineInfoReq {
+    required bytes          instrumentID        = 1;        /* 合约ID */
+    required int32          type                = 2;        /* K线类型 */
+}
+
+message GetKlineInfoRsp {
+    repeated KlineData      klineData           = 1;        /*K线数据*/
+}
+
+/**获取签名*/
+message GetMessageSignReq {
+    required uint32         phone               = 1;        /* 电话号码 */
+}
+
+message GetMessageSignRsp {
+    required int32          sign                = 1;        /* 签名 */
+}
+
+/*战队操作*/
+message TeamOptReq {
+    required uint32          type                = 1;        /* 操作类型 */
+    required int32           teamID              = 2;        /* 战队ID */
+}
+
+message TeamOptRsp {
+    required uint32          type                = 1;        /* 操作类型 */
+}
+
+/*个人排行榜*/
+message UserRankReq {
+    required uint32          type                = 1;        /* 排行榜类型 */
+}
+
+message UserRankRsp {
+    required uint32          type                = 1;        /* 排行榜类型 */
+    repeated UserRankData    rankList            = 2;        /* 排行榜信息 */
+}
+
+/*战队排行榜*/
+message TeamRankReq {
+    required uint32          type                = 1;        /* 排行榜类型 */
+}
+
+message TeamRankRsp {
+    required uint32          type                = 1;        /* 排行榜类型 */
+    repeated TeamRankData    rankList            = 2;        /* 排行榜信息 */
+}
+
+/*申请列表*/
+message TeamApplyListReq {
+}
+
+message TeamApplyListRsp {
+    repeated TeamApplyData   applyList           = 1;        /* 申请列表 */
+}
+
+/**活动产出*/
+message ActiveOutPutReq {
+    required int32          actID               = 1;        /* 活动ID */
+    required int32          telPhone            = 2;        /* 用户手机号码 */
+    required int32          money               = 3;        /* 待返现金 */
+}
+
+message ActiveOutPutRsp {
+    required int32          waitBackCoin        = 1;        /*待返现金*/
+}
+
+/**拉取活动产出记录*/
+message GetActiveLogReq {
+}
+
+message GetActiveLogRsp {
+    repeated ActiveLogData     actLogList        = 1;        /*活动日志*/
+}
+
+/**拉取返现信息*/
+message GetCashBackReq {
+}
+
+message GetCashBackRsp {
+    repeated CashBackData      cashBackList      = 1;        /*返现记录*/
+}

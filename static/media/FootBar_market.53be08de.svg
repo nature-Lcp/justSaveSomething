@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>交易图标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-169.000000, -745.000000)">
+            <g id="菜单" transform="translate(0.000000, 743.000000)">
+                <g id="交易" transform="translate(169.000000, 2.000000)">
+                    <g id="交易图标">
+                        <circle fill="#007AFF" cx="19" cy="19" r="19"></circle>
+                        <polygon fill="#FFFFFF" points="11.772 9.008 14.544 9.008 19.5 18.192 24.456 9.008 27.228 9.008 21.516 19.06 25.688 19.06 25.688 20.46 20.732 20.46 20.732 23.204 25.688 23.204 25.688 24.604 20.732 24.604 20.732 29 18.268 29 18.268 24.604 13.34 24.604 13.34 23.204 18.268 23.204 18.268 20.46 13.34 20.46 13.34 19.06 17.484 19.06"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

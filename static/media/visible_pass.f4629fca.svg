@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="12px" viewBox="0 0 18 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>隐藏图标 copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="修改密码" transform="translate(-313.000000, -163.000000)">
+            <g id="显示图标-copy" transform="translate(313.000000, 163.000000)">
+                <path d="M9.42958435,4.17853572 C9.16994418,4.35916577 9,4.65973659 9,5 C9,5.55228475 9.44771525,6 10,6 C10.3402634,6 10.6408342,5.83005582 10.8214643,5.57041565 C10.9366365,5.85777452 11,6.17148759 11,6.5 C11,7.88071187 9.88071187,9 8.5,9 C7.11928813,9 6,7.88071187 6,6.5 C6,5.11928813 7.11928813,4 8.5,4 C8.82851241,4 9.14222548,4.06336353 9.42958435,4.17853572 Z" id="Combined-Shape" fill="#007AFF"></path>
+                <path d="M9,10 C11.9455187,10 14.6121853,8.66666667 17,6 C14.6121853,3.33333333 11.9455187,2 9,2 C6.05448133,2 3.38781467,3.33333333 1,6 C3.38781467,8.66666667 6.05448133,10 9,10 Z" id="Oval-5" stroke="#007AFF" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

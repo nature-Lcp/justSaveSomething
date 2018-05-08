@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>模拟交易图标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-12.000000, -236.000000)">
+            <g id="模拟交易" transform="translate(12.000000, 236.000000)">
+                <g id="模拟交易图标">
+                    <circle id="模拟交易图标底板" fill="#99CAFF" cx="23" cy="23" r="23"></circle>
+                    <g transform="translate(23.361506, 17.221471) rotate(-12.000000) translate(-23.361506, -17.221471) translate(12.361506, 13.221471)" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2">
+                        <path d="M17.2079117,1.78234302 L20.2079117,1.78234302 C20.4840541,1.78234302 20.7079117,2.00620065 20.7079117,2.28234302 L20.7079117,5.28234302" transform="translate(18.957912, 3.532343) rotate(24.000000) translate(-18.957912, -3.532343) "></path>
+                        <path d="M0.207911691,4.0218524 L8.20791169,4.0218524 C9.31248119,4.0218524 10.2079117,4.9172829 10.2079117,6.0218524" transform="translate(5.207912, 5.021852) rotate(-20.000000) translate(-5.207912, -5.021852) "></path>
+                        <path d="M10.3202536,2.49370683 L18.3202536,2.49370683 C19.4248231,2.49370683 20.2170195,3.55440561 20.2170195,4.65897511" transform="translate(15.268637, 3.576341) scale(-1, -1) rotate(-20.000000) translate(-15.268637, -3.576341) "></path>
+                    </g>
+                    <rect fill="#FFFFFF" x="14" y="24" width="3" height="10" rx="1"></rect>
+                    <rect fill="#FFFFFF" x="24" y="22" width="3" height="12" rx="1"></rect>
+                    <rect fill="#FFFFFF" x="19" y="20" width="3" height="14" rx="1"></rect>
+                    <rect fill="#FFFFFF" x="29" y="19" width="3" height="15" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

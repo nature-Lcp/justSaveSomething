@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="14.3945312%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FD8D7B" offset="0%"></stop>
+            <stop stop-color="#EF2F11" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的" transform="translate(-19.000000, -212.000000)">
+            <g id="Group-7" transform="translate(10.000000, 212.000000)">
+                <g id="Group-5" transform="translate(9.000000, 0.000000)">
+                    <path d="M10,20 C5.02943725,20 1,18.5546973 1,13.627451 C1,8.70020468 5.02943725,4.70588235 10,4.70588235 C14.9705627,4.70588235 19,8.70020468 19,13.627451 C19,18.5546973 14.9705627,20 10,20 Z M10,4.70588235 C6.89339828,4.70588235 5.78125,3.01448078 4.375,2.16878 C5.28348792,1.62242697 6.06922886,0.72311029 7.34928831,0.154911481 C8.05063506,-0.156405615 8.90037438,1.32307921 10,1.32307921 C10.9390613,1.32307921 11.6958839,-0.213774333 12.3336779,0.0252467224 C13.8058333,0.576954897 14.6438302,1.57871703 15.625,2.16878 C14.21875,3.01448078 13.1066017,4.70588235 10,4.70588235 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+                    <polygon id="¥" fill="#FFFFFF" points="7.264 8.146 8.353 8.146 10.3 11.754 12.247 8.146 13.336 8.146 11.092 12.095 12.731 12.095 12.731 12.645 10.784 12.645 10.784 13.723 12.731 13.723 12.731 14.273 10.784 14.273 10.784 16 9.816 16 9.816 14.273 7.88 14.273 7.88 13.723 9.816 13.723 9.816 12.645 7.88 12.645 7.88 12.095 9.508 12.095"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
